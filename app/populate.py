@@ -197,9 +197,9 @@ def populate_table(conn):
                         conn.commit()
                 if batch:
                     psycopg2.extras.execute_values(cur, QUERY[0], batch)
-                    cur.execute(QUERY[1], [idx, True] + year)
                     batch = list()
-                    conn.commit()
+                cur.execute(QUERY[1], [idx, True] + year)
+                conn.commit()
                 exec_time = time.time() - start_time
                 print(f'File {file_name} done. Execution time - {exec_time} sec.')
                 executions_time[file_name] = exec_time
