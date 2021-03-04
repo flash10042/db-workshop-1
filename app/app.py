@@ -6,7 +6,7 @@ from select import select_table
 from config import db_config
 
 conn = None
-retries = 15
+retries = 30
 
 while retries:
     try:
